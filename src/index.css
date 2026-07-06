@@ -1,0 +1,246 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 10% 98%;
+    --foreground: 240 10% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+
+    --primary: 239 84% 67%;
+    --primary-foreground: 0 0% 98%;
+    --primary-glow: 239 84% 77%;
+
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 239 84% 67%;
+
+    --radius: 0.75rem;
+
+    --success: 142 76% 36%;
+    --warning: 38 92% 50%;
+    --info: 199 89% 48%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(240 4.8% 99%));
+
+    --shadow-elegant: 0 4px 20px -4px hsl(240 10% 3.9% / 0.1);
+    --shadow-glow: 0 0 40px hsl(var(--primary) / 0.15);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  .react-flow {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+  }
+
+  .context-flow-diagram .react-flow__node {
+    cursor: pointer;
+  }
+
+  .context-flow-diagram .react-flow__edge {
+    cursor: pointer;
+  }
+
+  .context-flow-diagram .react-flow__edge.selected .react-flow__edge-path {
+    stroke-width: 3;
+    filter: drop-shadow(0 0 4px hsl(var(--primary) / 0.45));
+  }
+
+  .context-flow-diagram .react-flow__edge.selected .react-flow__edge-textbg,
+  .context-flow-diagram .react-flow__edge.selected .react-flow__edge-text {
+    filter: drop-shadow(0 0 4px hsl(var(--primary) / 0.25));
+  }
+}
+
+/* Lightweight styles applied only during PDF export (see scripts/export-pdf.mjs) */
+html.pdf-export .pdf-decorative-blur {
+  display: none !important;
+}
+
+html.pdf-export .pdf-decorative-gradient {
+  background-image: none !important;
+}
+
+html.pdf-export .pdf-decorative-gradient--primary {
+  background-color: hsl(var(--primary) / 0.06) !important;
+}
+
+html.pdf-export .pdf-decorative-gradient--destructive {
+  background-color: hsl(var(--destructive) / 0.06) !important;
+}
+
+html.pdf-export .pdf-decorative-line {
+  opacity: 0.35;
+}
+
+html.pdf-export .shadow-glow,
+html.pdf-export [class*='shadow-'] {
+  box-shadow: none !important;
+}
+
+html.pdf-export .bg-gradient-primary.bg-clip-text {
+  -webkit-background-clip: border-box !important;
+  background-clip: border-box !important;
+  color: hsl(var(--primary)) !important;
+  background: none !important;
+}
+
+html.pdf-export .context-flow-diagram .react-flow__edge-path {
+  animation: none !important;
+  stroke-dasharray: none !important;
+}
+
+html.pdf-export .context-flow-diagram .react-flow__edge.selected .react-flow__edge-path,
+html.pdf-export .context-flow-diagram .react-flow__edge.selected .react-flow__edge-textbg,
+html.pdf-export .context-flow-diagram .react-flow__edge.selected .react-flow__edge-text {
+  filter: none !important;
+}
+
+html.pdf-export .context-flow-diagram:not(.context-flow-diagram--static) {
+  height: 380px !important;
+  min-height: 380px !important;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+html.pdf-export section:has(.context-flow-diagram) {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+html.pdf-export .context-flow-diagram--static {
+  break-inside: avoid;
+  page-break-inside: avoid;
+  overflow: visible !important;
+}
+
+html.pdf-export .context-flow-diagram--static img {
+  max-width: 100%;
+}
+
+html.pdf-export .package-breakdown-card {
+  break-inside: auto;
+  page-break-inside: auto;
+}
+
+html.pdf-export .package-breakdown-card + .package-breakdown-card {
+  break-before: auto;
+  page-break-before: auto;
+}
+
+html.pdf-export .package-breakdown-card > div:last-child > .grid {
+  grid-template-columns: 1fr !important;
+}
+
+html.pdf-export .package-breakdown-card [class*='hover:'] {
+  border-color: hsl(var(--border) / 0.7) !important;
+  background-color: hsl(var(--background) / 0.7) !important;
+}
+
+html.pdf-export .package-simulation-card {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+html.pdf-export .package-simulation-cards {
+  display: none !important;
+}
+
+html.pdf-export .package-simulation-table {
+  display: block !important;
+}
+
+html.pdf-export .backdrop-blur-sm {
+  backdrop-filter: none !important;
+}
+
+html.pdf-export .proposal-full-bleed {
+  position: static !important;
+  left: auto !important;
+  margin-left: 0 !important;
+  margin-top: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+html.pdf-export main .relative.left-1\/2 {
+  position: static !important;
+  left: auto !important;
+  margin-left: 0 !important;
+  margin-top: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+html.pdf-export main section.relative.overflow-hidden {
+  overflow: visible !important;
+}
+
+html.pdf-export article.space-y-10 > section.space-y-4:first-of-type {
+  break-after: avoid;
+  page-break-after: avoid;
+}
+
+.package-simulation-table {
+  display: none;
+}
+
+html.pdf-export header .container {
+  padding-top: 1rem !important;
+  padding-bottom: 1.5rem !important;
+}
+
+html.pdf-export h1 {
+  font-size: 1.875rem !important;
+  line-height: 1.25 !important;
+}
+
+html.pdf-export .package-breakdown-card > div:first-child {
+  break-after: avoid;
+  page-break-after: avoid;
+}
+
+html.pdf-export .package-breakdown-card > div:last-child > .grid > div {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+html.pdf-export .package-simulation-table {
+  font-size: 0.8125rem;
+}
+
+html.pdf-export .package-simulation-table td,
+html.pdf-export .package-simulation-table th {
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+  word-break: break-word;
+}
