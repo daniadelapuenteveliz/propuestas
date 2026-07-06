@@ -231,7 +231,7 @@ const indareHeader: ProposalHeader = {
 
 export const PROPOSALS = [
   {
-    slug: 'propuesta-judicial-1',
+    slug: 'ekk6033teeig6btp7dw2kppuimvf1wtafpe3viy5461v5e1gm5kwmmqci166ycg2kdjw39ketgkigukj1cx47a2y23ji2qi6ypke',
     title: 'Intake jurídico automatizado',
     header: judicialHeader,
     scope: judicialScope,

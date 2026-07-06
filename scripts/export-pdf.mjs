@@ -9,7 +9,7 @@ const rootDir = path.join(__dirname, '..');
 const previewPort = 4173;
 
 const OUTPUT_BY_SLUG = {
-  'propuesta-judicial-1': 'propuestaJudicial.pdf',
+  'ekk6033teeig6btp7dw2kppuimvf1wtafpe3viy5461v5e1gm5kwmmqci166ycg2kdjw39ketgkigukj1cx47a2y23ji2qi6ypke': 'propuestaJudicial.pdf',
   'ra047n7x8vch04mtpd88nke2ft6cpvwwbi9zigxarrcby8efu4pmepxwd6t8a4nmfei11xk6n0w1uuecmm7iwyi4hvty69bxabjd': 'propuestaIndare.pdf',
 };
 
@@ -17,7 +17,7 @@ const OUTPUT_BY_SLUG = {
 const A4_VIEWPORT = { width: 794, height: 1200 };
 
 function getExportConfig() {
-  const slug = process.argv[2] ?? 'propuesta-judicial-1';
+  const slug = process.argv[2] ?? 'ekk6033teeig6btp7dw2kppuimvf1wtafpe3viy5461v5e1gm5kwmmqci166ycg2kdjw39ketgkigukj1cx47a2y23ji2qi6ypke';
   const outputFile = OUTPUT_BY_SLUG[slug];
 
   if (!outputFile) {
