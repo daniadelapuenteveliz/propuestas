@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "export:pdf": "playwright install chromium && node scripts/export-pdf.mjs",
     "export:pdf:indare": "playwright install chromium && node scripts/export-pdf.mjs ra047n7x8vch04mtpd88nke2ft6cpvwwbi9zigxarrcby8efu4pmepxwd6t8a4nmfei11xk6n0w1uuecmm7iwyi4hvty69bxabjd",
-    "export:pdf:comercial-juridica": "playwright install chromium && node scripts/export-pdf.mjs imw3hhrrbw2xami5wcci45ag9jc2q5u4gicu34bci71k2wiiezk7h0g4zdabipntktb7y5wvawgdj5xc2zffmjtfz1nm5xvp5r8y"
+    "export:pdf:comercial-juridica": "playwright install chromium && node scripts/export-pdf.mjs imw3hhrrbw2xami5wcci45ag9jc2q5u4gicu34bci71k2wiiezk7h0g4zdabipntktb7y5wvawgdj5xc2zffmjtfz1nm5xvp5r8y",
+    "export:pdf:comercial-juridica-molina-matta": "playwright install chromium && node scripts/export-pdf.mjs xknn032dx8idq5m6amxvtcwqzemgmmyriev9gyn8rv2rk0n0vhrvk4w2k5g8jkx8t2mtv67v3cbbf16ub9viarebg792cnmeqd0v"
   },
   "dependencies": {
     "@radix-ui/react-dropdown-menu": "^2.1.19",
