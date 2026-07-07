@@ -25,7 +25,7 @@ export default function ProposalPage() {
             </div>
 
             <h1 className="text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
-              <span className="bg-gradient-primary bg-clip-text text-transparent">Plan kheprionAI growth</span>
+              <span className="bg-gradient-primary bg-clip-text text-transparent">Plan KheprionAI growth</span>
               <span className="text-foreground"> para Clark, Fuentes & Nun</span>
             </h1>
 
