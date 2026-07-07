@@ -34,9 +34,10 @@ export default function ProposalPage() {
                 Indare, con el objetivo de habilitar su operación lo antes posible.
               </p>
               <p>
-                El paquete incluye usuarios de google workspace administrables, registro y configuración de dominio web,
-                un front informativo con estilo WordPress, un webhook para el reenvío automatizado de formularios de
-                contacto y consultas, y soporte técnico continuo.
+                El paquete comprende la creación, administración y mantenimiento de un sitio web estático con estilo
+                WordPress, orientado a presentar la empresa y sus canales de contacto. Incluye un formulario de
+                contacto y un webhook para el reenvío automatizado de consultas, además de la gestión de certificados
+                SSL que habilitan conexiones seguras mediante HTTPS.
               </p>
             </div>
           </section>
