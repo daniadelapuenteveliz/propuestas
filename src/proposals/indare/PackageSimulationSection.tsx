@@ -1,5 +1,5 @@
 import { Users } from 'lucide-react';
-import type { ProposalSimulationSection as SimulationConfig } from '../../config/proposals';
+import type { SimulationConfig } from './config';
 
 function formatClp(amount: number): string {
   return `$${amount.toLocaleString('es-CL')} CLP`;

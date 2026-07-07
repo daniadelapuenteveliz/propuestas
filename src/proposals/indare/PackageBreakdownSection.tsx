@@ -13,9 +13,9 @@ import {
   Video,
   type LucideIcon,
 } from 'lucide-react';
-import type { ProposalPackageBlock } from '../../config/proposals';
+import type { PackageBlock } from './config';
 
-const featureIcons: Record<ProposalPackageBlock['features'][number]['icon'], LucideIcon> = {
+const featureIcons: Record<PackageBlock['features'][number]['icon'], LucideIcon> = {
   drive: HardDrive,
   mail: Mail,
   gemini: Sparkles,
@@ -32,7 +32,7 @@ const featureIcons: Record<ProposalPackageBlock['features'][number]['icon'], Luc
 
 type PackageBreakdownSectionProps = {
   title: string;
-  blocks: ProposalPackageBlock[];
+  blocks: PackageBlock[];
 };
 
 export default function PackageBreakdownSection({ title, blocks }: PackageBreakdownSectionProps) {

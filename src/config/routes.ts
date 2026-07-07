@@ -1,0 +1,20 @@
+export const PROPOSAL_ROUTES = [
+  {
+    slug: 'ekk6033teeig6btp7dw2kppuimvf1wtafpe3viy5461v5e1gm5kwmmqci166ycg2kdjw39ketgkigukj1cx47a2y23ji2qi6ypke',
+    pdfOutput: 'propuestaJudicial.pdf',
+  },
+  {
+    slug: 'ra047n7x8vch04mtpd88nke2ft6cpvwwbi9zigxarrcby8efu4pmepxwd6t8a4nmfei11xk6n0w1uuecmm7iwyi4hvty69bxabjd',
+    pdfOutput: 'propuestaIndare.pdf',
+  },
+  {
+    slug: 'propuesta-comercial-juridica',
+    pdfOutput: 'propuestaComercialJuridica.pdf',
+  },
+] as const;
+
+export type ProposalRouteSlug = (typeof PROPOSAL_ROUTES)[number]['slug'];
+
+export function getProposalRouteBySlug(slug: string) {
+  return PROPOSAL_ROUTES.find((route) => route.slug === slug);
+}
