@@ -16,7 +16,10 @@ function App() {
         path="/ra047n7x8vch04mtpd88nke2ft6cpvwwbi9zigxarrcby8efu4pmepxwd6t8a4nmfei11xk6n0w1uuecmm7iwyi4hvty69bxabjd"
         element={<IndareProposalPage />}
       />
-      <Route path="/propuesta-comercial-juridica" element={<PropuestaComercialJuridicaProposalPage />} />
+      <Route
+        path="/imw3hhrrbw2xami5wcci45ag9jc2q5u4gicu34bci71k2wiiezk7h0g4zdabipntktb7y5wvawgdj5xc2zffmjtfz1nm5xvp5r8y"
+        element={<PropuestaComercialJuridicaProposalPage />}
+      />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

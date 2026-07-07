@@ -8,7 +8,7 @@ export const PROPOSAL_ROUTES = [
     pdfOutput: 'propuestaIndare.pdf',
   },
   {
-    slug: 'propuesta-comercial-juridica',
+    slug: 'imw3hhrrbw2xami5wcci45ag9jc2q5u4gicu34bci71k2wiiezk7h0g4zdabipntktb7y5wvawgdj5xc2zffmjtfz1nm5xvp5r8y',
     pdfOutput: 'propuestaComercialJuridica.pdf',
   },
 ] as const;

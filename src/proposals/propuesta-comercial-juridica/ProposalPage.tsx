@@ -1,15 +1,7 @@
 import { Scale } from 'lucide-react';
 import ContextFlowDiagram from '@/components/diagrams/ContextFlowDiagram';
-
-const List = ({ items }: { items: string[] }) => (
-  <ul className="list-disc space-y-1 pl-6 text-muted-foreground">
-    {items.map((item) => (
-      <li key={item} className="leading-relaxed">
-        {item}
-      </li>
-    ))}
-  </ul>
-);
+import ImplementationPricingCard from './ImplementationPricingCard';
+import { implementationPricingStages } from './pricingConfig';
 
 export default function ProposalPage() {
   return (
@@ -115,21 +107,21 @@ export default function ProposalPage() {
                       </div>
 
                       <div className="space-y-2">
+                        <h3 className="text-base font-semibold text-foreground">Etapa 3: Integración con Instagram</h3>
+                        <p>
+                          Se extiende la capa de atención inicial al canal de Instagram, permitiendo captar consultas,
+                          clasificar leads y derivarlos al mismo flujo de tickets y gestión interna del estudio.
+                        </p>
+                      </div>
+
+                      <div className="space-y-2">
                         <h3 className="text-base font-semibold text-foreground">
-                          Etapa 3: Integración con Calendly para reuniones y citas
+                          Etapa 4: Integración con Calendly para reuniones y citas
                         </h3>
                         <p>
                           Se incorpora la coordinación de reuniones y citas con clientes mediante Calendly, con
                           encuentros vía Zoom integrados al flujo de gestión para agendar, confirmar y dar seguimiento
                           desde la plataforma.
-                        </p>
-                      </div>
-
-                      <div className="space-y-2">
-                        <h3 className="text-base font-semibold text-foreground">Etapa 4: Integración con Instagram</h3>
-                        <p>
-                          Se extiende la capa de atención inicial al canal de Instagram, permitiendo captar consultas,
-                          clasificar leads y derivarlos al mismo flujo de tickets y gestión interna del estudio.
                         </p>
                       </div>
                     </div>
@@ -142,326 +134,92 @@ export default function ProposalPage() {
           <section className="space-y-10">
             <h2 className="text-xl font-semibold text-foreground">Implementación</h2>
 
-            <div className="space-y-6">
-              <h3 className="text-base font-semibold text-foreground">Etapa 1: Integración con WhatsApp y correo</h3>
+            {implementationPricingStages.map((stage, index) => (
+              <div
+                key={stage.className}
+                className={index === 0 ? 'space-y-6' : 'space-y-6 border-t border-border/60 pt-10'}
+              >
+                <h3 className="text-base font-semibold text-foreground">{stage.title}</h3>
 
-              <div className="space-y-4 text-muted-foreground leading-relaxed">
-                <p>
-                  En esta etapa se habilitan dos agentes de IA especializados: uno orientado a la conversación con
-                  clientes —atención inicial, clasificación y apertura de casos— y otro dedicado al trabajo interno del
-                  equipo. En conjunto permiten crear tickets, estructurar casos, almacenar archivos, generar plantillas
-                  de documentos y contactar clientes por WhatsApp y correo de forma profesional y trazable. Tiempo
-                  estimado de implementación: <span className="font-medium text-foreground">1 a 2 meses</span>.
-                </p>
+                <div className="space-y-4 text-muted-foreground leading-relaxed">
+                  {index === 0 ? (
+                    <p>
+                      En esta etapa se habilitan dos agentes de IA especializados: uno orientado a la conversación con
+                      clientes —atención inicial, clasificación y apertura de casos— y otro dedicado al trabajo interno del
+                      equipo. En conjunto permiten crear tickets, estructurar casos, almacenar archivos, generar plantillas
+                      de documentos y contactar clientes por WhatsApp y correo de forma profesional y trazable.
+                    </p>
+                  ) : 'intro' in stage ? (
+                    <p>{stage.intro}</p>
+                  ) : null}
+                </div>
+
+                <ImplementationPricingCard
+                  className={stage.className}
+                  stageLabel={stage.stageLabel}
+                  implementationItems={[...stage.implementationItems]}
+                  resourceItems={[...stage.resourceItems]}
+                  total={stage.total}
+                />
               </div>
-
-              <div className="implementation-pricing-table-etapa-1 overflow-hidden rounded-xl border border-primary/20">
-                <table className="w-full border-collapse text-sm">
-                  <thead>
-                    <tr className="border-b border-border/70 bg-primary/5">
-                      <th className="px-4 py-3 text-left font-semibold text-foreground">Concepto</th>
-                      <th className="px-4 py-3 text-left font-semibold text-foreground">Incluye</th>
-                      <th className="px-4 py-3 text-right font-semibold text-foreground">Precio mensual (USD)</th>
-                    </tr>
-                  </thead>
-                  <tbody className="text-muted-foreground">
-                    <tr className="border-b border-border/50">
-                      <td className="px-4 py-3 font-medium text-foreground">
-                        Licencia de la plataforma con usuarios ilimitados
-                      </td>
-                      <td className="px-4 py-3 leading-relaxed">
-                        Acceso completo a la plataforma Kheprion para todo el equipo, sin límite de usuarios.
-                      </td>
-                      <td className="px-4 py-3 text-right font-semibold tabular-nums text-primary">43,9</td>
-                    </tr>
-                    <tr className="border-b border-border/50">
-                      <td className="px-4 py-3 font-medium text-foreground">Agente de conversación con clientes</td>
-                      <td className="px-4 py-3 leading-relaxed">
-                        Atención inicial, clasificación de consultas y apertura de tickets.
-                      </td>
-                      <td className="px-4 py-3 text-right font-medium tabular-nums text-foreground">15</td>
-                    </tr>
-                    <tr className="border-b border-border/50">
-                      <td className="px-4 py-3 font-medium text-foreground">Agente de conversación interna</td>
-                      <td className="px-4 py-3 leading-relaxed">
-                        Apoyo en gestión de tickets, casos, archivos y plantillas de documentos.
-                      </td>
-                      <td className="px-4 py-3 text-right font-medium tabular-nums text-foreground">15</td>
-                    </tr>
-                    <tr className="border-b border-border/50">
-                      <td className="px-4 py-3 font-medium text-foreground">Bolsa mensual de WhatsApp</td>
-                      <td className="px-4 py-3 leading-relaxed">
-                        500 mensajes incluidos (~30 conversaciones). Excedente: USD 0,035 por mensaje adicional.
-                      </td>
-                      <td className="px-4 py-3 text-right font-medium tabular-nums text-foreground">13</td>
-                    </tr>
-                    <tr className="border-b border-border/50">
-                      <td className="px-4 py-3 font-medium text-foreground">Bolsa mensual de tokens</td>
-                      <td className="px-4 py-3 leading-relaxed">
-                        5.000.000 tokens input y 1.000.000 tokens output (~50 conversaciones).
-                      </td>
-                      <td className="px-4 py-3 text-right font-medium tabular-nums text-foreground">13</td>
-                    </tr>
-                    <tr className="bg-primary/5">
-                      <td className="px-4 py-3 font-semibold text-foreground" colSpan={2}>
-                        Total Etapa 1 — Integración con WhatsApp y correo
-                      </td>
-                      <td className="px-4 py-3 text-right text-base font-bold tabular-nums text-primary">99,9 USD</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-
-              <p className="text-sm leading-relaxed text-muted-foreground">
-                Valores referenciales en USD. El consumo adicional de WhatsApp se factura según la tarifa indicada;
-                agentes y bolsas pueden ajustarse conforme evolucione el volumen operativo del estudio.
-              </p>
-            </div>
-
-            <div className="space-y-6 border-t border-border/60 pt-10">
-              <h3 className="text-base font-semibold text-foreground">Etapa 2: Integración con APIs judiciales</h3>
-
-              <div className="space-y-4 text-muted-foreground leading-relaxed">
-                <p>
-                  En esta fase, los agentes internos de KheprionAI acceden a fuentes de información judicial para
-                  consultar antecedentes del caso directamente desde el chat interno, apoyando la gestión operativa sin
-                  salir del entorno de trabajo.
-                </p>
-              </div>
-
-              <div className="implementation-pricing-table-etapa-2 overflow-hidden rounded-xl border border-primary/20">
-                <table className="w-full border-collapse text-sm">
-                  <thead>
-                    <tr className="border-b border-border/70 bg-primary/5">
-                      <th className="px-4 py-3 text-left font-semibold text-foreground">Concepto</th>
-                      <th className="px-4 py-3 text-left font-semibold text-foreground">Incluye</th>
-                      <th className="px-4 py-3 text-right font-semibold text-foreground">Precio mensual (USD)</th>
-                    </tr>
-                  </thead>
-                  <tbody className="text-muted-foreground">
-                    <tr className="border-b border-border/50">
-                      <td className="px-4 py-3 font-medium text-foreground">
-                        Licencia de la plataforma con usuarios ilimitados
-                      </td>
-                      <td className="px-4 py-3 leading-relaxed">
-                        Acceso completo a la plataforma Kheprion para todo el equipo, sin límite de usuarios.
-                      </td>
-                      <td className="px-4 py-3 text-right font-semibold tabular-nums text-primary">43,9</td>
-                    </tr>
-                    <tr className="border-b border-border/50">
-                      <td className="px-4 py-3 font-medium text-foreground">Agente de conversación con clientes</td>
-                      <td className="px-4 py-3 leading-relaxed">
-                        Atención inicial, clasificación de consultas y apertura de tickets.
-                      </td>
-                      <td className="px-4 py-3 text-right font-medium tabular-nums text-foreground">15</td>
-                    </tr>
-                    <tr className="border-b border-border/50">
-                      <td className="px-4 py-3 font-medium text-foreground">Agente de conversación interna</td>
-                      <td className="px-4 py-3 leading-relaxed">
-                        Apoyo en gestión de tickets, casos, archivos y plantillas de documentos.
-                      </td>
-                      <td className="px-4 py-3 text-right font-medium tabular-nums text-foreground">15</td>
-                    </tr>
-                    <tr className="border-b border-border/50">
-                      <td className="px-4 py-3 font-medium text-foreground">Bolsa mensual de WhatsApp</td>
-                      <td className="px-4 py-3 leading-relaxed">
-                        500 mensajes incluidos (~30 conversaciones). Excedente: USD 0,035 por mensaje adicional.
-                      </td>
-                      <td className="px-4 py-3 text-right font-medium tabular-nums text-foreground">13</td>
-                    </tr>
-                    <tr className="border-b border-border/50">
-                      <td className="px-4 py-3 font-medium text-foreground">Bolsa mensual de tokens</td>
-                      <td className="px-4 py-3 leading-relaxed">
-                        5.000.000 tokens input y 1.000.000 tokens output (~50 conversaciones).
-                      </td>
-                      <td className="px-4 py-3 text-right font-medium tabular-nums text-foreground">13</td>
-                    </tr>
-                    <tr className="bg-primary/5">
-                      <td className="px-4 py-3 font-semibold text-foreground" colSpan={2}>
-                        Total Etapa 2 — Integración con APIs judiciales
-                      </td>
-                      <td className="px-4 py-3 text-right text-base font-bold tabular-nums text-primary">99,9 USD</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-
-              <p className="text-sm leading-relaxed text-muted-foreground">
-                Valores referenciales en USD. El consumo adicional de WhatsApp se factura según la tarifa indicada;
-                agentes y bolsas pueden ajustarse conforme evolucione el volumen operativo del estudio.
-              </p>
-            </div>
+            ))}
           </section>
 
-          <section className="relative left-1/2 -mt-5 -ml-[50vw] w-screen max-w-[100vw] overflow-hidden border-y border-primary/20 pt-5 pb-10 sm:-mt-5 sm:pt-6 sm:pb-12">
-            <div className="pdf-decorative-gradient pdf-decorative-gradient--primary absolute inset-0 bg-gradient-to-br from-primary/15 via-background to-primary-glow/10" />
-            <div className="pdf-decorative-blur absolute -right-20 -top-20 h-72 w-72 rounded-full bg-primary/20 blur-3xl" />
-            <div className="pdf-decorative-blur absolute -bottom-24 -left-16 h-56 w-56 rounded-full bg-primary-glow/25 blur-3xl" />
-            <div className="pdf-decorative-line absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
+          <div className="proposal-full-bleed relative left-1/2 -mt-5 -ml-[50vw] w-screen max-w-[100vw] sm:-mt-5">
+            <section className="relative overflow-hidden border-b border-t border-primary/20 pt-5 pb-10 sm:pt-6 sm:pb-12">
+              <div className="pdf-decorative-gradient pdf-decorative-gradient--primary absolute inset-0 bg-gradient-to-br from-primary/15 via-background to-primary-glow/10" />
+              <div className="pdf-decorative-blur absolute -right-20 -top-20 h-72 w-72 rounded-full bg-primary/20 blur-3xl" />
+              <div className="pdf-decorative-blur absolute -bottom-24 -left-16 h-56 w-56 rounded-full bg-primary-glow/25 blur-3xl" />
 
-            <div className="container relative mx-auto w-full space-y-6 px-4 sm:px-6 lg:px-8">
-              <h2 className="text-xl font-semibold text-foreground">Flujo de trabajo propuesto</h2>
+              <div className="container relative mx-auto w-full px-4 sm:px-6 lg:px-8">
+                <div className="space-y-6">
+                  <h2 className="text-xl font-semibold text-foreground">Costos variables extras</h2>
 
-              <div className="space-y-4">
-                <h3 className="text-lg font-medium text-foreground">
-                  Etapa 1: recepción de mensajes vía WhatsApp e Instagram
-                </h3>
-                <div className="space-y-4 text-muted-foreground leading-relaxed">
-                  <p>
-                    El cliente inicia contacto con el estudio a través de un número de WhatsApp o una cuenta de
-                    Instagram.
+                  <p className="max-w-4xl text-muted-foreground leading-relaxed">
+                    Las bolsas de tokens y mensajes incluidas en cada etapa cubren el consumo estimado del plan. Una vez
+                    agotado ese cupo, la operación continúa sin interrupciones y el excedente se factura de forma
+                    transparente según las tarifas unitarias siguientes.
                   </p>
-                  <p>
-                    Un agente de IA asume la conversación e intenta autenticar al remitente. Según el resultado:
-                  </p>
-                  <List
-                    items={[
-                      'Si el cliente ya está identificado, la solicitud avanza directamente a la siguiente etapa.',
-                      'Si no está autenticado, el agente solicita los datos necesarios para registrarlo antes de continuar.',
-                    ]}
-                  />
+
+                  <div className="overflow-hidden rounded-2xl border border-primary/25 bg-card shadow-glow">
+                    <div className="border-b border-primary/15 bg-gradient-to-r from-primary/10 to-primary-glow/5 px-4 py-3 sm:px-6">
+                      <p className="text-sm font-semibold text-foreground">Tarifas por consumo adicional</p>
+                    </div>
+
+                    <div className="divide-y divide-border/50 bg-gradient-to-b from-primary/5 to-transparent p-4 sm:p-6">
+                      <div className="flex flex-col gap-1 py-3 first:pt-0 last:pb-0 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
+                        <p className="text-sm text-muted-foreground">Tokens de entrada</p>
+                        <p className="text-sm font-medium tabular-nums text-foreground sm:text-right">
+                          1,4 USD por cada 1M de tokens
+                        </p>
+                      </div>
+
+                      <div className="flex flex-col gap-1 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
+                        <p className="text-sm text-muted-foreground">Tokens de salida</p>
+                        <p className="text-sm font-medium tabular-nums text-foreground sm:text-right">
+                          15 USD por cada 1M de tokens
+                        </p>
+                      </div>
+
+                      <div className="flex flex-col gap-1 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
+                        <p className="text-sm text-muted-foreground">Mensajes de WhatsApp</p>
+                        <p className="text-sm font-medium tabular-nums text-foreground sm:text-right">
+                          0,03 USD por mensaje
+                        </p>
+                      </div>
+
+                      <div className="flex flex-col gap-1 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
+                        <p className="text-sm text-muted-foreground">Mensajes de Instagram</p>
+                        <p className="text-sm font-medium tabular-nums text-foreground sm:text-right">
+                          0,003 USD por mensaje
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-
-              <div className="space-y-4">
-                <h3 className="text-lg font-medium text-foreground">Etapa 2: Creación de causa o seguimiento</h3>
-                <div className="space-y-4 text-muted-foreground leading-relaxed">
-                  <p>
-                    Si el cliente ya tiene una causa o ticket creado, puede acceder directamente al apartado de
-                    seguimiento o iniciar la creación de una causa nueva.
-                  </p>
-                  <p>
-                    En este punto, un agente recopilará la información necesaria para completar la causa, clasificará el
-                    lead y generará un ticket con el resultado del proceso.
-                  </p>
-                </div>
-              </div>
-
-              <div className="space-y-4">
-                <h3 className="text-lg font-medium text-foreground">Etapa 3: Llevar la causa</h3>
-                <div className="space-y-4 text-muted-foreground leading-relaxed">
-                  <p>
-                    Desde la plataforma de KheprionAI, abogados y agentes podrán trabajar en conjunto mediante un chat
-                    interactivo —similar al de ChatGPT— para avanzar en la causa.
-                  </p>
-                  <p>Desde ese entorno podrán solicitar al sistema, entre otras acciones:</p>
-                  <List
-                    items={[
-                      'Completar y llenar documentos.',
-                      'Enviar correos.',
-                      'Contactar al cliente por WhatsApp.',
-                      'Generar una cita.',
-                      'Consultar información judicial.',
-                      'Ejecutar otras tareas operativas vinculadas al caso.',
-                    ]}
-                  />
-                </div>
-              </div>
-
-              <div className="space-y-4">
-                <h3 className="text-lg font-medium text-foreground">Etapa 4: Seguimiento</h3>
-                <div className="space-y-4 text-muted-foreground leading-relaxed">
-                  <p>
-                    En todo momento, los clientes podrán hacer seguimiento de su caso contactando al estudio vía WhatsApp
-                    o Instagram.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section className="space-y-4">
-            <h2 className="text-xl font-semibold text-foreground">Posibles habilidades que pueden tener los agentes</h2>
-            <div className="space-y-6 text-muted-foreground leading-relaxed">
-              <div className="space-y-2">
-                <h3 className="text-lg font-medium text-foreground">1) Verificador de Tabla de la Corte (PJUD)</h3>
-                <p>
-                  Consulta la API del Poder Judicial para verificar en tiempo real si una causa está programada para
-                  alegato, detallando la sala, el número de tabla y la fecha exacta. Permite confirmar la audiencia
-                  evitando los errores habituales de la página web oficial.
-                </p>
-              </div>
-              <div className="space-y-2">
-                <h3 className="text-lg font-medium text-foreground">
-                  2) Transcriptor y Extractor de Documentos Legales (OCR Inteligente)
-                </h3>
-                <p>
-                  Lee fotos, escaneos y PDFs complejos de forma local, sin depender de APIs externas, mediante tecnología
-                  OCR y visión artificial. Extrae texto limpio, montos, RUTs y fechas para citarlos directamente en
-                  escritos judiciales, reduciendo errores de transcripción.
-                </p>
-              </div>
-              <div className="space-y-2">
-                <h3 className="text-lg font-medium text-foreground">3) Catalogador Automatizado de Pruebas Documentales</h3>
-                <p>
-                  Redacta y ordena el listado formal de documentos adjuntos para la minuta de una audiencia preparatoria
-                  laboral chilena. Lee los archivos aportados por el abogado y genera las menciones legales
-                  estandarizadas en un formato listo para copiar y pegar en el escrito judicial.
-                </p>
-              </div>
-              <div className="space-y-2">
-                <h3 className="text-lg font-medium text-foreground">
-                  4) Extractor de Expedientes Digitales (Descargador de Ebooks PJUD)
-                </h3>
-                <p>
-                  Automatiza la descarga de expedientes completos (Ebooks en PDF) de causas civiles y laborales
-                  directamente desde la Oficina Judicial Virtual del PJUD. Utiliza herramientas de automatización de
-                  navegador en el equipo, mediante la librería Playwright, para buscar el RIT, evitar la navegación
-                  manual y guardar los archivos ordenados. Resulta especialmente útil para procesar listas masivas desde
-                  archivos Excel.
-                </p>
-              </div>
-              <div className="space-y-2">
-                <h3 className="text-lg font-medium text-foreground">
-                  5) Descargador Integrado de Expedientes (OJV-Recopilador)
-                </h3>
-                <p>
-                  Busca y descarga el expediente completo (Ebook en PDF) de causas civiles o laborales desde la Oficina
-                  Judicial Virtual (OJV). No consume APIs externas ni requiere programas adicionales: navega y extrae de
-                  forma autónoma el documento directamente desde la pestaña de Chrome para guardarlo en la carpeta
-                  correspondiente.
-                </p>
-              </div>
-              <div className="space-y-2">
-                <h3 className="text-lg font-medium text-foreground">
-                  6) Auditor de Escritos y Control de Calidad (Gemini-Revisor)
-                </h3>
-                <p>
-                  Sube documentos de respaldo a Google Drive y envía el escrito legal a Gemini para cruzar los datos.
-                  Funciona como un revisor externo que detecta faltas de ortografía, errores gramaticales e
-                  inconsistencias en fechas, RUTs o montos frente a las fuentes originales, entregando una lista de
-                  correcciones.
-                </p>
-              </div>
-              <div className="space-y-2">
-                <h3 className="text-lg font-medium text-foreground">7) Auditor de Citas Legales (Verificador Ley Chile)</h3>
-                <p>
-                  Extrae y analiza automáticamente todas las citas normativas de un escrito judicial chileno —como
-                  artículos del COT, CPC, Código del Trabajo, entre otros—. Consulta la API directa de Ley Chile
-                  (Biblioteca del Congreso Nacional) para contrastar el escrito con el texto oficial vigente, detectando
-                  errores de transcripción o normas derogadas, y genera un informe en Word que clasifica cada cita según
-                  su exactitud.
-                </p>
-              </div>
-              <div className="space-y-2">
-                <h3 className="text-lg font-medium text-foreground">8) Planificador de Juicios Laborales (Defensa Empleador)</h3>
-                <p>
-                  Genera una minuta en Word para la audiencia de juicio que incluye resúmenes del caso, hechos a probar,
-                  interrogatorios de testigos con técnica abierta, preguntas de la contraparte y el borrador de
-                  observaciones a la prueba.
-                </p>
-              </div>
-              <div className="space-y-2">
-                <h3 className="text-lg font-medium text-foreground">9) Solicitador de Antecedentes y Pruebas al Cliente</h3>
-                <p>
-                  Redacta el correo formal que un abogado envía a la empresa demandada al inicio de un juicio laboral en
-                  Chile. Analiza la demanda y elabora un mail listo para copiar y pegar con el resumen del caso —
-                  incluyendo indicios de tutela si aplica —, un cuadro de cuantías exactas y el listado de documentos y
-                  preguntas específicas que el cliente debe entregar para la defensa.
-                </p>
-              </div>
-            </div>
-          </section>
+            </section>
+          </div>
         </article>
       </main>
     </div>
