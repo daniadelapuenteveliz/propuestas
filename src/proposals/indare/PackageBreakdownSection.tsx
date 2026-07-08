@@ -13,9 +13,38 @@ import {
   Video,
   type LucideIcon,
 } from 'lucide-react';
-import type { PackageBlock } from './config';
+import type { PackageBlock, PackageFeature, PackagePrice } from './config';
 
-const featureIcons: Record<PackageBlock['features'][number]['icon'], LucideIcon> = {
+function formatClp(amount: number): string {
+  return `$${amount.toLocaleString('es-CL')} CLP`;
+}
+
+function PackagePriceDisplay({ pricing }: { pricing: PackagePrice }) {
+  const annualAmount =
+    pricing.annualDiscountPercent != null
+      ? Math.round(pricing.amount * (1 - pricing.annualDiscountPercent / 100))
+      : null;
+
+  return (
+    <div className="flex flex-col items-start gap-2 sm:items-end">
+      <span className="inline-flex w-fit items-center rounded-full border border-primary/25 bg-background/80 px-3 py-1 text-sm font-semibold text-primary shadow-sm">
+        {formatClp(pricing.amount)} {pricing.suffix}
+      </span>
+      {annualAmount != null && pricing.annualDiscountPercent != null ? (
+        <span className="inline-flex w-fit flex-wrap items-center justify-end gap-2">
+          <span className="whitespace-nowrap rounded-full border border-premium/40 bg-premium/15 px-2 py-0.5 text-[11px] font-semibold text-primary">
+            {pricing.annualDiscountPercent}% dcto plan anual
+          </span>
+          <span className="inline-flex w-fit items-center rounded-full border border-primary/25 bg-background/80 px-3 py-1 text-sm font-semibold text-primary shadow-sm">
+            {formatClp(annualAmount)} {pricing.suffix}
+          </span>
+        </span>
+      ) : null}
+    </div>
+  );
+}
+
+const featureIcons: Record<PackageFeature['icon'], LucideIcon> = {
   drive: HardDrive,
   mail: Mail,
   gemini: Sparkles,
@@ -28,6 +57,7 @@ const featureIcons: Record<PackageBlock['features'][number]['icon'], LucideIcon>
   uptime: Activity,
   server: Server,
   webhook: Unplug,
+  advisory: Sparkles,
 };
 
 type PackageBreakdownSectionProps = {
@@ -49,7 +79,9 @@ export default function PackageBreakdownSection({ title, blocks }: PackageBreakd
             <div className="border-b border-primary/10 bg-gradient-to-r from-primary/10 via-primary/5 to-transparent px-5 py-4 sm:px-6">
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <h3 className="text-lg font-semibold text-foreground">{block.heading}</h3>
-                {block.priceLabel ? (
+                {block.pricing ? (
+                  <PackagePriceDisplay pricing={block.pricing} />
+                ) : block.priceLabel ? (
                   <span className="inline-flex w-fit items-center rounded-full border border-primary/25 bg-background/80 px-3 py-1 text-sm font-semibold text-primary shadow-sm">
                     {block.priceLabel}
                   </span>
@@ -82,6 +114,23 @@ export default function PackageBreakdownSection({ title, blocks }: PackageBreakd
               <div className="grid gap-3 sm:grid-cols-2">
                 {block.features.map((feature) => {
                   const Icon = featureIcons[feature.icon];
+
+                  if (feature.highlight) {
+                    return (
+                      <div
+                        key={feature.title}
+                        className="flex gap-3 rounded-xl border border-premium/50 bg-gradient-to-br from-premium/25 via-premium/10 to-background p-4 shadow-md ring-1 ring-premium/30 sm:col-span-2"
+                      >
+                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-premium/30 text-primary shadow-sm">
+                          <Icon className="h-5 w-5" aria-hidden="true" />
+                        </div>
+                        <div className="min-w-0 space-y-1">
+                          <p className="font-semibold leading-snug text-primary">{feature.title}</p>
+                          <p className="text-sm leading-relaxed text-foreground/80">{feature.description}</p>
+                        </div>
+                      </div>
+                    );
+                  }
 
                   return (
                     <div

@@ -4,34 +4,43 @@
 
 @layer base {
   :root {
-    --background: 240 10% 98%;
-    --foreground: 240 10% 3.9%;
+    /* Fondo claro #F8FAFC */
+    --background: 210 40% 98%;
+    /* Texto principal #1F2937 */
+    --foreground: 215 28% 17%;
 
+    /* Blanco puro #FFFFFF */
     --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
+    --card-foreground: 215 28% 17%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
+    --popover-foreground: 215 28% 17%;
 
-    --primary: 239 84% 67%;
-    --primary-foreground: 0 0% 98%;
-    --primary-glow: 239 84% 77%;
+    /* Color principal — Azul navy profundo #0F172A */
+    --primary: 222 47% 11%;
+    --primary-foreground: 0 0% 100%;
+    /* Color secundario — Azul corporativo #1E3A8A */
+    --primary-glow: 224 64% 33%;
 
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
+    --secondary: 224 64% 33%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
+    --muted: 210 40% 96%;
+    /* Texto secundario #64748B */
+    --muted-foreground: 215 16% 47%;
 
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
+    /* Acento premium — Dorado champagne #C8A96A */
+    --accent: 40 35% 94%;
+    --accent-foreground: 222 47% 11%;
+    --premium: 40 46% 60%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 239 84% 67%;
+    /* Líneas / bordes #E2E8F0 */
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 224 64% 33%;
 
     --radius: 0.75rem;
 
@@ -39,11 +48,16 @@
     --warning: 38 92% 50%;
     --info: 199 89% 48%;
 
-    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
-    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(240 4.8% 99%));
+    --gradient-primary: linear-gradient(
+      135deg,
+      hsl(var(--primary)),
+      hsl(var(--primary-glow)),
+      hsl(var(--premium))
+    );
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(210 40% 98%));
 
-    --shadow-elegant: 0 4px 20px -4px hsl(240 10% 3.9% / 0.1);
-    --shadow-glow: 0 0 40px hsl(var(--primary) / 0.15);
+    --shadow-elegant: 0 4px 20px -4px hsl(215 28% 17% / 0.1);
+    --shadow-glow: 0 0 40px hsl(var(--premium) / 0.18);
   }
 }
 
