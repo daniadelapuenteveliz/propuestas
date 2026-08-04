@@ -3,6 +3,7 @@ import IntakeJuridicoClarkProposalPage from '@/proposals/intake-juridico-clark/P
 import IndareProposalPage from '@/proposals/indare/ProposalPage';
 import PropuestaComercialJuridicaMolinaMattaProposalPage from '@/proposals/propuesta-comercial-juridica-molina-matta/ProposalPage';
 import PropuestaComercialJuridicaProposalPage from '@/proposals/propuesta-comercial-juridica/ProposalPage';
+import ObsicoreStarterProposalPage from '@/proposals/obsicore-starter/ProposalPage';
 import { Route, Routes } from 'react-router-dom';
 
 function App() {
@@ -24,6 +25,10 @@ function App() {
       <Route
         path="/xknn032dx8idq5m6amxvtcwqzemgmmyriev9gyn8rv2rk0n0vhrvk4w2k5g8jkx8t2mtv67v3cbbf16ub9viarebg792cnmeqd0v"
         element={<PropuestaComercialJuridicaMolinaMattaProposalPage />}
+      />
+      <Route
+        path="/obsicore032dx8idq5m6amxvtcwqzemgmmyriev9gyn8rv2rk0n0vhrvk4w2k5g8jkx8t2mtv67v3cbbf16ub9viarebg792cnmeqd0v"
+        element={<ObsicoreStarterProposalPage />}
       />
       <Route path="*" element={<NotFound />} />
     </Routes>

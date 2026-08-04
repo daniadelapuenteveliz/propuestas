@@ -15,6 +15,10 @@ export const PROPOSAL_ROUTES = [
     slug: 'xknn032dx8idq5m6amxvtcwqzemgmmyriev9gyn8rv2rk0n0vhrvk4w2k5g8jkx8t2mtv67v3cbbf16ub9viarebg792cnmeqd0v',
     pdfOutput: 'propuestaComercialJuridicaMolinaMatta.pdf',
   },
+  {
+    slug: 'obsicore032dx8idq5m6amxvtcwqzemgmmyriev9gyn8rv2rk0n0vhrvk4w2k5g8jkx8t2mtv67v3cbbf16ub9viarebg792cnmeqd0v',
+    pdfOutput: 'propuestaObsicoreStarter.pdf',
+  },
 ] as const;
 
 export type ProposalRouteSlug = (typeof PROPOSAL_ROUTES)[number]['slug'];
