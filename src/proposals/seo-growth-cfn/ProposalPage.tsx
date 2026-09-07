@@ -282,11 +282,11 @@ export default function SeoGrowthProposalPage() {
                         Original: {formatClp(pricing.basePriceMonthly)} / mes
                       </span>
                       <span className="inline-flex items-center rounded-full bg-white/15 px-3 py-1 text-sm font-extrabold text-white backdrop-blur-sm border border-white/20">
-                        {formatClp(0)} / mes
+                        {formatClp(2997)} / mes
                       </span>
                     </div>
                     <span className="text-[11px] font-bold text-emerald-300 bg-emerald-950/40 px-2.5 py-0.5 rounded-full border border-emerald-400/30">
-                      100% de descuento inicial
+                      70% de descuento
                     </span>
                   </div>
                 </div>
