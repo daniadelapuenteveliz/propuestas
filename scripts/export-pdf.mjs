@@ -14,6 +14,7 @@ const OUTPUT_BY_SLUG = {
   imw3hhrrbw2xami5wcci45ag9jc2q5u4gicu34bci71k2wiiezk7h0g4zdabipntktb7y5wvawgdj5xc2zffmjtfz1nm5xvp5r8y: 'propuestaComercialJuridica.pdf',
   xknn032dx8idq5m6amxvtcwqzemgmmyriev9gyn8rv2rk0n0vhrvk4w2k5g8jkx8t2mtv67v3cbbf16ub9viarebg792cnmeqd0v: 'propuestaComercialJuridicaMolinaMatta.pdf',
   obsicore032dx8idq5m6amxvtcwqzemgmmyriev9gyn8rv2rk0n0vhrvk4w2k5g8jkx8t2mtv67v3cbbf16ub9viarebg792cnmeqd0v: 'propuestaObsicoreStarter.pdf',
+  cfnseo032dx8idq5m6amxvtcwqzemgmmyriev9gyn8rv2rk0n0vhrvk4w2k5g8jkx8t2mtv67v3cbbf16ub9viarebg792cnmeqd0v: 'propuestaSeoCFN.pdf',
 };
 
 /** A4 width at 96 DPI — matches the rendered page width in the PDF. */

@@ -19,6 +19,10 @@ export const PROPOSAL_ROUTES = [
     slug: 'obsicore032dx8idq5m6amxvtcwqzemgmmyriev9gyn8rv2rk0n0vhrvk4w2k5g8jkx8t2mtv67v3cbbf16ub9viarebg792cnmeqd0v',
     pdfOutput: 'propuestaObsicoreStarter.pdf',
   },
+  {
+    slug: 'cfnseo032dx8idq5m6amxvtcwqzemgmmyriev9gyn8rv2rk0n0vhrvk4w2k5g8jkx8t2mtv67v3cbbf16ub9viarebg792cnmeqd0v',
+    pdfOutput: 'propuestaSeoCFN.pdf',
+  },
 ] as const;
 
 export type ProposalRouteSlug = (typeof PROPOSAL_ROUTES)[number]['slug'];

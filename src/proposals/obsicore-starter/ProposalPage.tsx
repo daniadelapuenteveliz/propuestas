@@ -222,7 +222,7 @@ export default function ProposalPage() {
             <div className="overflow-hidden rounded-2xl border border-primary/25 bg-card shadow-glow">
               <div className="border-b border-primary/20 bg-gradient-to-r from-primary to-primary-glow px-5 py-4 text-white">
                 <h3 className="text-lg font-bold">Presupuesto Consolidado</h3>
-                <p className="text-xs text-white/80">Detalle mensual y anual estimado (con opción de descuento anual indicada en la información).</p>
+                <p className="text-xs text-white/80">Detalle mensual estimado (con opción de descuento anual indicada en la información).</p>
               </div>
 
               <div className="p-5 sm:p-6 space-y-6">
@@ -260,10 +260,6 @@ export default function ProposalPage() {
                         <span className="text-sm font-semibold text-muted-foreground">Total Mensual Año 1</span>
                         <span className="text-xl font-bold text-primary">{formatClp(totalYear1Monthly)}</span>
                       </div>
-                      <div className="flex justify-between items-baseline">
-                        <span className="text-xs font-semibold text-muted-foreground">Total Anual Año 1</span>
-                        <span className="text-sm font-bold text-muted-foreground">{formatClp(totalYear1Annual)}</span>
-                      </div>
                     </div>
                   </div>
 
@@ -295,10 +291,6 @@ export default function ProposalPage() {
                       <div className="flex justify-between items-baseline">
                         <span className="text-sm font-semibold text-muted-foreground">Total Mensual Año 2+</span>
                         <span className="text-xl font-bold text-primary">{formatClp(totalYear2Monthly)}</span>
-                      </div>
-                      <div className="flex justify-between items-baseline">
-                        <span className="text-xs font-semibold text-muted-foreground">Total Anual Año 2+</span>
-                        <span className="text-sm font-bold text-muted-foreground">{formatClp(totalYear2Annual)}</span>
                       </div>
                     </div>
                   </div>
